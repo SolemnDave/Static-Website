@@ -28,7 +28,6 @@ const Home = () => {
     '.',
   ]
 
-  // Counter state
   const [counter, setCounter] = useState('...')
 
   useEffect(() => {
@@ -36,7 +35,6 @@ const Home = () => {
       setLetterClass('text-animate-hover')
     }, 3000)
 
-    // Fetch counter
     async function updateCounter() {
       try {
         const response = await fetch(
@@ -48,8 +46,7 @@ const Home = () => {
         }
 
         const data = await response.json()
-        const viewsCount =
-          typeof data === 'object' && data.views ? data.views : data
+        const viewsCount = data.views ? data.views : data
         setCounter(viewsCount)
       } catch (error) {
         console.error(error)
@@ -59,7 +56,7 @@ const Home = () => {
 
     updateCounter()
 
-    return () => clearTimeout(timer) // Cleanup the timer
+    return () => clearTimeout(timer)
   }, [])
 
   return (
@@ -69,17 +66,17 @@ const Home = () => {
         <div className="text-zone">
           <h1>
             <span className={letterClass}>Hello,</span>
-            <span className={'{letterClass} _13'}> </span>
+            <span className={`${letterClass} _13`}> </span>
             <br />
             <span className={letterClass}>I'm </span>
-            <span className={'{letterClass} _14'}> </span>
+            <span className={`${letterClass} _14`}> </span>
             <AnimatedLetters
               letterClass={letterClass}
               strArray={nameArray}
               idx={15}
             />
             <br />
-            <span className={'{letterClass} _20'}> </span>
+            <span className={`${letterClass} _20`}> </span>
             <AnimatedLetters
               letterClass={letterClass}
               strArray={jobArray}
@@ -88,8 +85,8 @@ const Home = () => {
           </h1>
           <h2>Debugging The World, One line at a time.</h2>
           <Link to="/contact" className="flat-button">
-            CONTACT ME{' '}
-          </Link>{' '}
+            CONTACT ME
+          </Link>
           <a
             href="/DavidsCloudResume.pdf"
             className="flat-button resume-button"
