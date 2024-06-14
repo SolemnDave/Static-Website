@@ -14,7 +14,7 @@
 - HTML
 - CSS
 
-### Amazon Services
+#### Amazon
 
 - Simple Storage Service (S3)
 - Lambda
