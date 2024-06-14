@@ -36,23 +36,18 @@ const Home = () => {
       setLetterClass('text-animate-hover')
     }, 3000)
 
-    // Fetch counter
     async function updateCounter() {
       try {
-        const response = await fetch(
-          'https://zmte4oekfdu2g7rqzuctsd4ilu0ggqdy.lambda-url.us-east-1.on.aws/'
-        )
+        const response = await fetch(process.env.REACT_APP_API_URL)
 
         if (!response.ok) {
           throw new Error(`Failed to fetch data. Status: ${response.status}`)
         }
 
         const data = await response.json()
-        const viewsCount =
-          typeof data === 'object' && data.views ? data.views : data
-        setCounter(viewsCount)
+        setCounter(data.views)
       } catch (error) {
-        console.error(error)
+        console.error('Error fetching view counter:', error)
         setCounter('Error')
       }
     }
