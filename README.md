@@ -2,7 +2,7 @@
 
 # Architecture
 
-![Static-Website Architecture](src/assets/images/StaticWebsiteArch.png)
+![Static-Website Architecture](src/assets/images/StaticWebArch.png)
 
 ## Table of Contents
 
