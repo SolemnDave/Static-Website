@@ -38,6 +38,7 @@ const Home = () => {
 
     async function updateCounter() {
       try {
+        console.log('Fetching data from:', process.env.REACT_APP_API_URL)
         const response = await fetch(process.env.REACT_APP_API_URL)
 
         if (!response.ok) {
@@ -45,6 +46,7 @@ const Home = () => {
         }
 
         const data = await response.json()
+        console.log('Fetched data:', data)
         setCounter(data.views)
       } catch (error) {
         console.error('Error fetching view counter:', error)
