@@ -1,4 +1,19 @@
-![Layout](src/assets/images/StaticWeb.png)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Layout</title>
+</head>
+<body>
+    <div class="image-container">
+        <a href="https://static.solemndave.cloud/" target="_blank">
+            <img src="src/assets/images/StaticWeb.png" alt="Layout Image">
+        </a>
+    </div>
+</body>
+</html>
 
 # Architecture
 
