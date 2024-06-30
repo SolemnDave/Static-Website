@@ -1,4 +1,4 @@
-# Navigate to page
+## Navigate to page
 
 <!DOCTYPE html>
 <html lang="en">
