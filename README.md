@@ -1,3 +1,5 @@
+![Layout](src/assets/images/StaticWeb.png)
+
 # Architecture
 
 ![Static-Website Architecture](src/assets/images/StaticWebArch.png)
