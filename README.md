@@ -1,39 +1,82 @@
-## Navigate to page
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    <div class="image-container">
-        <a href="https://static.solemndave.cloud/" target="_blank">
-            <img src="src/assets/images/StaticWeb.png" alt="Layout Image">
-        </a>
-    </div>
-</body>
-</html>
-
 # Architecture
 
 ![Static-Website Architecture](src/assets/images/StaticWebArch.png)
 
-- [Services Used](#services-used)
+## Table of Contents
 
-## Services Used
+- [Overview](#overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Setup](#setup)
 
-- React JS
-- HTML
-- CSS
+# Static Website Hosting with AWS and Terraform
 
-#### Amazon
+## Overview
 
-- Simple Storage Service (S3)
-- Lambda
-- DynamoDB
-- CloudFront
-- Route 53
-- Certificate Manager
-- IAM
-- CloudWatch
+This project hosts a React-based static website using AWS services and Terraform for enhanced functionality and deployment. The website is stored in an S3 bucket with custom error responses and is distributed globally via CloudFront, which also handles custom 403 and 404 errors. Route 53 manages DNS for easy access via a custom domain. A CI/CD pipeline with GitHub Actions automates deployment, syncing the built site to S3 and invalidating the CloudFront cache. Additionally, a DynamoDB table and Lambda function implement a view counter for tracking page views. Terraform manages the infrastructure, ensuring a scalable and efficient hosting solution.
+
+## Features
+
+- **S3 Bucket for Static Website Hosting:** Hosts the static website with index.html as the root and custom error handling.
+- **CloudFront Distribution:** Globally caches and distributes content with custom 403 and 404 error responses.
+- **Route 53 DNS Management:** Manages DNS records for the custom domain for easy access.
+- **CI/CD Pipeline with GitHub Actions:** Automates the deployment, builds the React project, syncs to S3, and invalidates CloudFront cache.
+- **Infrastructure as Code with Terraform:** Uses Terraform for consistent and easy AWS resource management.
+- **Custom Domain Setup:** Integrates Route 53 and ACM for secure HTTPS access via a custom domain.
+- **DynamoDB for View Counter:** Stores page view counts for fast and scalable data retrieval.
+- **Lambda Function for View Counter:** Updates and retrieves view counts from DynamoDB for efficient tracking.
+
+## Tech Stack
+
+- **Frontend:** React for building the user interface, JavaScript, CSS, SASS, and HTML.
+- **Hosting:** AWS S3 for static website hosting, CloudFront for content distribution.
+- **DNS Management:** AWS Route 53 for managing DNS records.
+- **CI/CD:** GitHub Actions for automating deployments.
+- **Infrastructure:** Terraform for infrastructure as code.
+- **Database:** AWS DynamoDB for storing view counts.
+- **Backend Logic:** AWS Lambda for handling view counter logic.
+
+## Setup
+
+- **Install** Dependencies:
+
+Ensure you have Node.js and npm installed.
+Run the following command to install the necessary dependencies:
+bash
+Copy code
+npm install
+Build the Project:
+
+- **Compile the React application:**
+  bash
+  Copy code
+  npm run build
+  Deploy Infrastructure with Terraform:
+
+- **Navigate to the terraform directory:**
+  bash
+  Copy code
+  cd terraform
+  Initialize Terraform:
+  bash
+  Copy code
+  terraform init
+  Apply the Terraform configuration to create the necessary AWS resources:
+  bash
+  Copy code
+  terraform apply
+  Set Up GitHub Actions for CI/CD:
+
+- **Configure the following secrets in your GitHub repository settings:**
+  AWS_ACCESS_KEY_ID
+  AWS_SECRET_ACCESS_KEY
+  CLOUDFRONT_DISTRIBUTION_ID (if applicable)
+  Deploy the Website:
+
+- **Push your changes to the main branch:**
+  bash
+  Copy code
+  git add .
+  git commit -m "Deploy static website"
+  git push origin main
+  GitHub Actions will automatically build and deploy the website to S3, and invalidate the CloudFront cache.
