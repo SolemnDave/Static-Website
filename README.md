@@ -13,11 +13,11 @@
 
 ## Overview
 
-This project hosts a React-based static website using AWS services and Terraform for enhanced functionality and deployment. The website is stored in an S3 bucket with custom error responses and is distributed globally via CloudFront, which also handles custom 403 and 404 errors. Route 53 manages DNS for easy access via a custom domain. A CI/CD pipeline with GitHub Actions automates deployment, syncing the built site to S3 and invalidating the CloudFront cache. Additionally, a DynamoDB table and Lambda function implement a view counter for tracking page views. Terraform manages the infrastructure, ensuring a scalable and efficient hosting solution.
+This project hosts a React-based static website using AWS services and Terraform for enhanced functionality and deployment. The website is stored in an S3 bucket with custom error responses and is distributed globally via CloudFront, which also handles custom 403 and 404 errors. Route 53 manages DNS for easy access via a custom domain. A CI/CD pipeline with GitHub Actions automates deployment, syncing the built site to S3 and invalidating the CloudFront cache. Additionally, a DynamoDB table and Lambda function implement a view counter for tracking page views. Terraform manages the infrastructure, ensuring a scalable and efficient hosting solution. IAM is used for access management and CloudWatch for monitoring and logging.
 
 ## Features
 
-- **S3 Bucket for Static Website Hosting:** Hosts the static website with index.html as the root and custom error handling.
+- **S3 Bucket for Static Website Hosting:** Hosts the static website with `index.html` as the root and custom error handling.
 - **CloudFront Distribution:** Globally caches and distributes content with custom 403 and 404 error responses.
 - **Route 53 DNS Management:** Manages DNS records for the custom domain for easy access.
 - **CI/CD Pipeline with GitHub Actions:** Automates the deployment, builds the React project, syncs to S3, and invalidates CloudFront cache.
@@ -25,6 +25,8 @@ This project hosts a React-based static website using AWS services and Terraform
 - **Custom Domain Setup:** Integrates Route 53 and ACM for secure HTTPS access via a custom domain.
 - **DynamoDB for View Counter:** Stores page view counts for fast and scalable data retrieval.
 - **Lambda Function for View Counter:** Updates and retrieves view counts from DynamoDB for efficient tracking.
+- **IAM:** Manages access to AWS resources securely.
+- **CloudWatch:** Monitors and logs the infrastructure and application performance.
 
 ## Tech Stack
 
@@ -35,48 +37,53 @@ This project hosts a React-based static website using AWS services and Terraform
 - **Infrastructure:** Terraform for infrastructure as code.
 - **Database:** AWS DynamoDB for storing view counts.
 - **Backend Logic:** AWS Lambda for handling view counter logic.
+- **Access Management:** AWS IAM for managing access.
+- **Monitoring and Logging:** AWS CloudWatch for monitoring and logging.
 
 ## Setup
 
-- **Install** Dependencies:
+1. **Install Dependencies:**
 
-Ensure you have Node.js and npm installed.
-Run the following command to install the necessary dependencies:
-bash
-Copy code
-npm install
-Build the Project:
+   - Ensure you have Node.js and npm installed.
+   - Run the following command to install the necessary dependencies:
+     ```bash
+     npm install
+     ```
 
-- **Compile the React application:**
-  bash
-  Copy code
-  npm run build
-  Deploy Infrastructure with Terraform:
+2. **Build the Project:**
 
-- **Navigate to the terraform directory:**
-  bash
-  Copy code
-  cd terraform
-  Initialize Terraform:
-  bash
-  Copy code
-  terraform init
-  Apply the Terraform configuration to create the necessary AWS resources:
-  bash
-  Copy code
-  terraform apply
-  Set Up GitHub Actions for CI/CD:
+   - Compile the React application:
+     ```bash
+     npm run build
+     ```
 
-- **Configure the following secrets in your GitHub repository settings:**
-  AWS_ACCESS_KEY_ID
-  AWS_SECRET_ACCESS_KEY
-  CLOUDFRONT_DISTRIBUTION_ID (if applicable)
-  Deploy the Website:
+3. **Deploy Infrastructure with Terraform:**
 
-- **Push your changes to the main branch:**
-  bash
-  Copy code
-  git add .
-  git commit -m "Deploy static website"
-  git push origin main
-  GitHub Actions will automatically build and deploy the website to S3, and invalidate the CloudFront cache.
+   - Navigate to the `terraform` directory:
+     ```bash
+     cd terraform
+     ```
+   - Initialize Terraform:
+     ```bash
+     terraform init
+     ```
+   - Apply the Terraform configuration to create the necessary AWS resources:
+     ```bash
+     terraform apply
+     ```
+
+4. **Set Up GitHub Actions for CI/CD:**
+
+   - Configure the following secrets in your GitHub repository settings:
+     - `AWS_ACCESS_KEY_ID`
+     - `AWS_SECRET_ACCESS_KEY`
+     - `CLOUDFRONT_DISTRIBUTION_ID` (if applicable)
+
+5. **Deploy the Website:**
+   - Push your changes to the `main` branch:
+     ```bash
+     git add .
+     git commit -m "Deploy static website"
+     git push origin main
+     ```
+   - GitHub Actions will automatically build and deploy the website to S3, and invalidate the CloudFront cache.
