@@ -1,0 +1,111 @@
+.certificate-page {
+  padding-left: 100px;
+  padding-right: 50px;
+  width: calc(100% - 150px);
+  position: initial;
+  height: 100%;
+  overflow: auto;
+  background-image: url('../../assets/images/certificatebg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  .page-title {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 52px;
+    font-family: 'Coolvetica';
+    color: #ffff;
+    font-weight: 400;
+    position: relative;
+    left: -10px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .details-container {
+    width: 80%;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style-type: none;
+    text-align: center;
+    opacity: 1;
+  }
+
+  li {
+    // Adjust the flex basis to fit your design needs
+    flex: 1 0 calc(20% - 20px); // Adjust the percentage as needed
+    padding: 10px; // Adjust padding as needed
+    align-items: center; // Center items horizontally
+    justify-content: center; // Center items vertically
+
+    img {
+      width: 100%; // Make image fill the container
+      height: auto; // Maintain aspect ratio
+      max-width: 120px; // Max width of the image, adjust as needed
+      border-radius: 10px; // Optional: rounds the corners of the image
+      transition: transform 0.3s; // Smooth transition for hover effect
+      opacity: 0.9;
+
+      &:hover {
+        transform: scale(1.05); // Slightly enlarge the image on hover
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  body {
+    background-color: #0a1e38; /* Your desired background color */
+  }
+
+  .certificate-page {
+    padding: 0 50px; // Simplified padding
+    width: calc(100% - 100px); // Adjust width based on padding
+    background: none;
+    background-color: #0a1e38;
+
+    .page-title {
+      color: #ffd300;
+    }
+
+    .details-container {
+      justify-content: center; // Center the items when they wrap
+      background-color: none;
+
+      li {
+        flex: 1 0 calc(50% - 20px); // Adjust the flex-basis for smaller screens
+        margin-bottom: 20px; // Add some space between wrapped items
+        img {
+          max-width: 100px; // Adjust the max-width of the image for smaller screens
+        }
+      }
+    }
+  }
+
+  .container {
+    width: 100%; // Ensure the container takes full width
+    padding: 20px; // Consistent padding
+    box-sizing: border-box; // Ensure padding doesn't affect the total width
+
+    .page-title p {
+      margin-left: 20px;
+      margin-top: 20px;
+    }
+
+    .image-box {
+      height: 200px;
+      width: calc(
+        50% - 10px
+      ); // Ensure the image box adjusts with the screen size
+      margin-bottom: 20px; // Add space between wrapped items
+    }
+  }
+}
