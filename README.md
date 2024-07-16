@@ -77,7 +77,6 @@ This project hosts a React-based static website using AWS services and Terraform
    - Configure the following secrets in your GitHub repository settings:
      - `AWS_ACCESS_KEY_ID`
      - `AWS_SECRET_ACCESS_KEY`
-     - `CLOUDFRONT_DISTRIBUTION_ID` (if applicable)
 
 5. **Deploy the Website:**
    - Push your changes to the `main` branch:
